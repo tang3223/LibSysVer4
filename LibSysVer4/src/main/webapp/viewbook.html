@@ -37,7 +37,7 @@
                   <td>{{$index+1}}</td>
                   <td>{{b.title}}</td>
                   <td><span ng-repeat="a in b.authors">{{a.authorName}}, </span></td>
-                  <td>{{b.publisher.publisherName}}</td>
+                  <td><span ng-repeat="p in b.publisher">{{p.publisherName}}</span></td>
                   <td><span ng-repeat="g in b.genres">{{g.genreName}}, </span></td>                  
                   <td><button type="button" class="btn btn-primary" ng-click="showEditBookModal(b.bookId)">Update</button></td>
                   <td><button type="button" class="btn btn-danger" ng-click="showDelBookModal(b.bookId)">Delete</button></td>

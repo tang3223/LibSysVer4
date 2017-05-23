@@ -7,7 +7,9 @@ import org.springframework.jdbc.support.*;
 import java.sql.*;
 import java.util.*;
 
+import com.gcit.libsystem.entity.Author;
 import com.gcit.libsystem.entity.Book;
+import com.gcit.libsystem.entity.Genre;
 
 public class BookDao extends BaseDao implements ResultSetExtractor<List<Book>>{
 	
@@ -15,11 +17,11 @@ public class BookDao extends BaseDao implements ResultSetExtractor<List<Book>>{
 //		final String addBook  = "INSERT INTO tbl_book (title, pubId) VALUE (?,?)";
 //		Object[]     bookInfo = {book.getTitle(),book.getPublisherID()};
 //		template.update(addBook, bookInfo);	
-		for (Integer authorID : book.getAuthorID()){
-			addBookAuthors(book.getBookId(), authorID);
+		for (Author author : book.getAuthors()){
+			addBookAuthors(book.getBookId(), author.getAuthorID());
 		}
-		for (Integer genreID : book.getGenreID()){
-			addBookGenres(book.getBookId(), genreID);
+		for (Genre genre : book.getGenres()){
+			addBookGenres(book.getBookId(), genre.getGenreId());
 		}
 	}
 	
@@ -30,8 +32,8 @@ public class BookDao extends BaseDao implements ResultSetExtractor<List<Book>>{
 	}
 	
 	public void addBookAuthors(Book book) throws SQLException{
-		for (Integer authorID : book.getAuthorID()){
-			addBookAuthors(book.getBookId(), authorID);
+		for (Author author : book.getAuthors()){
+			addBookAuthors(book.getBookId(), author.getAuthorID());
 		} 
 	}
 
@@ -42,14 +44,14 @@ public class BookDao extends BaseDao implements ResultSetExtractor<List<Book>>{
 	}
 	
 	public void addBookGenres(Book book) throws SQLException{
-		for (Integer genreID : book.getGenreID()){
-			addBookGenres(book.getBookId(), genreID);
+		for (Genre genre : book.getGenres()){
+			addBookGenres(book.getBookId(), genre.getGenreId());
 		}
 	}
 	
 	public Integer addBookReplyID(Book book) throws SQLException{
 		final String addBook  = "INSERT INTO tbl_book (title, pubId) VALUE (?,?)";
-		Object[] 	 bookInfo = {book.getTitle(), book.getPublisherID()};
+		Object[] 	 bookInfo = {book.getTitle(), book.getPublisher().get(0).getPublisherId()};
 		KeyHolder    bookID   = new GeneratedKeyHolder();
 		
 		template.update(new PreparedStatementCreator() {
@@ -95,7 +97,7 @@ public class BookDao extends BaseDao implements ResultSetExtractor<List<Book>>{
 	
 	public void updateBookPublisher(Book book) throws SQLException {
 		String  updateBookPublisher  = "UPDATE tbl_book SET pubId=? WHERE bookId=?";
-		Object[] bookPublisherInfo = {book.getPublisherID(), book.getBookId()};
+		Object[] bookPublisherInfo = {book.getPublisher().get(0).getPublisherId(), book.getBookId()};
 		template.update(updateBookPublisher,bookPublisherInfo);
 	}
 	

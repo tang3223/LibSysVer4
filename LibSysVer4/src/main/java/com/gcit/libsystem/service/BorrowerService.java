@@ -56,7 +56,7 @@ public class BorrowerService {
 			for (Book b : books){
 				b.setAuthors(authorDao.readAuthorByBook(b.getBookId()));
 				b.setGenres(genreDao.readGenreByBook(b.getBookId()));
-				b.setPublisher(publisherDao.readPublisherByBook(b.getBookId()));
+				b.setPublisher(Arrays.asList(publisherDao.readPublisherByBook(b.getBookId())));
 				Integer copies = copiesDao.readCopies(b.getBookId(), branchID);
 				b.setRelatedCopies(copies);
 			}
@@ -96,7 +96,7 @@ public class BorrowerService {
 			Book book = bookDao.readBook(bookID);
 			book.setAuthors(authorDao.readAuthorByBook(bookID));
 			book.setGenres(genreDao.readGenreByBook(bookID));
-			book.setPublisher(publisherDao.readPublisherByBook(bookID));
+			book.setPublisher(Arrays.asList(publisherDao.readPublisherByBook(book.getBookId())));
 			return book;
 		} catch (SQLException e) {
 			e.printStackTrace();

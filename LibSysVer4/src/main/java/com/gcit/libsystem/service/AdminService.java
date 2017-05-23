@@ -302,7 +302,7 @@ public class AdminService {
 			for (Book b : books){
 				b.setAuthors(authorDao.readAuthorByBook(b.getBookId()));
 				b.setGenres(genreDao.readGenreByBook(b.getBookId()));
-				b.setPublisher(publisherDao.readPublisherByBook(b.getBookId()));
+				b.setPublisher(Arrays.asList(publisherDao.readPublisherByBook(b.getBookId())));
 			}
 			return books;
 		} catch (SQLException e) {
@@ -317,7 +317,7 @@ public class AdminService {
 			Book book = bookDao.readBook(bookID);
 			book.setAuthors(authorDao.readAuthorByBook(bookID));
 			book.setGenres(genreDao.readGenreByBook(bookID));
-			book.setPublisher(publisherDao.readPublisherByBook(bookID));
+			book.setPublisher(Arrays.asList(publisherDao.readPublisherByBook(book.getBookId())));
 			return book;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -332,6 +332,20 @@ public class AdminService {
 			for (Author author : authors){
 				author.setBooks(bookDao.readBookByAuthor(author.getAuthorID()));
 				}
+			return authors;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/viewAuthorsOnly", method = RequestMethod.GET, produces="application/json")
+	public List<Author> readAllAuthorOnly(){
+		try {
+			List<Author> authors = authorDao.readAllAuthors();
+/*			for (Author author : authors){
+				author.setBooks(bookDao.readBookByAuthor(author.getAuthorID()));
+				}*/
 			return authors;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -379,6 +393,20 @@ public class AdminService {
 		return null;
 	}
 	
+	@RequestMapping(value = "/viewGenresOnly", method = RequestMethod.GET, produces="application/json")
+	public List<Genre> readAllGenreOnly(){
+		try {
+			List<Genre> genres = genreDao.readAllGenre();
+/*			for (Genre genre : genres){
+				genre.setBooks(bookDao.readBookByGenre(genre.getGenreId()));
+				}*/
+			return genres;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@RequestMapping(value = "/viewSingleGenre/{genreID}", method = RequestMethod.GET, produces="application/json")
 	public Genre readGenre(@PathVariable Integer genreID){
 		try {
@@ -398,6 +426,20 @@ public class AdminService {
 			for (Publisher publisher : publishers){
 				publisher.setBooks(bookDao.readBookByPublisher(publisher.getPublisherId()));
 				}
+			return publishers;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/viewPublisherOnly", method = RequestMethod.GET, produces="application/json")
+	public List<Publisher> readAllPublisherOnly(){
+		try {
+			List<Publisher> publishers = publisherDao.readAllPublisher();
+/*			for (Publisher publisher : publishers){
+				publisher.setBooks(bookDao.readBookByPublisher(publisher.getPublisherId()));
+				}*/
 			return publishers;
 		} catch (SQLException e) {
 			e.printStackTrace();

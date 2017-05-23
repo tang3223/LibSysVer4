@@ -8,17 +8,23 @@
 			<p>Enter the name of your book:</p>
 			<input type="text" class="form-control" ng-model="book.title" placeholder="Book name">
 			<p>Select the author of your book:</p>
-			<select ng-model="book.authorID" multiple required>
+			<multiselect ng-model="book.authors" options="authors" id-prop="authorID" display-prop="authorName" show-search="true">
+			</multiselect>
+<!-- 			<select ng-model="book.authorID" multiple required>
 				<option ng-repeat="a in authors" value="{{a.authorID}}">{{a.authorName}}</option>
-			</select >
+			</select > -->
 			<p>Select the publisher of your book:</p>
-			<select ng-model="book.publisherID" required>
+			<multiselect ng-model="book.publisher" options="publishers" selection-limit="1" id-prop="publisherId" display-prop="publisherName" show-search="true">
+			</multiselect>
+<!-- 			<select ng-model="book.publisherID" required>
 				<option ng-repeat="p in publishers" value="{{p.publisherId}}">{{p.publisherName}}</option>
-			</select>
+			</select> -->
 			<p>Select the genre of your book:</p>
-			<select ng-model="book.genreID" multiple required>
+			<multiselect ng-model="book.genres" options="genres" id-prop="genreId" display-prop="genreName" show-search="true">
+			</multiselect>
+<!-- 			<select ng-model="book.genreID" multiple required>
 				<option ng-repeat="g in genres" value="{{g.genreId}}">{{g.genreName}}</option>
-			</select>				     	
+			</select>	 -->			     	
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>

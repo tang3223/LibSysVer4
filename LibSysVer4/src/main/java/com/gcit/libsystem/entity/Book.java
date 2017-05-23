@@ -10,7 +10,7 @@ public class Book implements Serializable{
 	private String title;
 	private List<Author> authors;
 	private List<Integer> authorID;
-	private Publisher publisher;
+	private List<Publisher> publisher;
 	private Integer publisherID;
 	private List<Genre> genres;
 	private List<Integer> genreID;
@@ -53,10 +53,10 @@ public class Book implements Serializable{
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
-	public Publisher getPublisher() {
+	public List<Publisher> getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(Publisher publisher) {
+	public void setPublisher(List<Publisher> publisher) {
 		this.publisher = publisher;
 	}
 	public List<Genre> getGenres() {
