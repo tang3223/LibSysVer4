@@ -343,9 +343,6 @@ public class AdminService {
 	public List<Author> readAllAuthorOnly(){
 		try {
 			List<Author> authors = authorDao.readAllAuthors();
-/*			for (Author author : authors){
-				author.setBooks(bookDao.readBookByAuthor(author.getAuthorID()));
-				}*/
 			return authors;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -397,9 +394,6 @@ public class AdminService {
 	public List<Genre> readAllGenreOnly(){
 		try {
 			List<Genre> genres = genreDao.readAllGenre();
-/*			for (Genre genre : genres){
-				genre.setBooks(bookDao.readBookByGenre(genre.getGenreId()));
-				}*/
 			return genres;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -437,9 +431,7 @@ public class AdminService {
 	public List<Publisher> readAllPublisherOnly(){
 		try {
 			List<Publisher> publishers = publisherDao.readAllPublisher();
-/*			for (Publisher publisher : publishers){
-				publisher.setBooks(bookDao.readBookByPublisher(publisher.getPublisherId()));
-				}*/
+
 			return publishers;
 		} catch (SQLException e) {
 			e.printStackTrace();

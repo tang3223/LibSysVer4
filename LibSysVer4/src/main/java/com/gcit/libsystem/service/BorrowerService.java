@@ -204,39 +204,4 @@ public class BorrowerService {
 	}
 }
 
-//public boolean checkDupBook(Integer bookID, Integer branchID, Integer borrowerID) throws SQLException{
-//	Connection conn = null;
-//
-//	try {
-//		conn = ConnectionUtil.getConnection();
-//		BookLoanDao bldao = new BookLoanDao(conn);
-//		BranchDao brdao = new BranchDao(conn);		
-//		return bldao.checkBookLoan(bookID, branchID, borrowerID);
-//	} catch (ClassNotFoundException | SQLException e) {
-//		e.printStackTrace();
-//		return false;
-//	} finally{
-//		if(conn!=null){
-//			conn.close();
-//		}
-//	}
-//}
-
-//public BookLoan readBookLoan(Integer borrowerID, Integer bookID, Integer branchID, Integer num) throws SQLException{
-//Connection conn = null;
-//
-//try {
-//	conn = ConnectionUtil.getConnection();
-//	BookLoanDao bldao = new BookLoanDao(conn);
-//	BookLoan bookLoan = bldao.readBookLoan(bookID, branchID, borrowerID, num);
-//	return bookLoan;
-//} catch (ClassNotFoundException | SQLException e) {
-//	e.printStackTrace();
-//} finally{
-//	if(conn!=null){
-//		conn.close();
-//	}
-//}
-//return null;
-//}
 
