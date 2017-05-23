@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Welcome to GCIT Library System</h1>
+  </div>
+</div>
+
+<div class="container" ng-controller="mainCtrl">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Administrator</h2>
+      <p><a class="btn btn-default" href="#/admin" role="button">Select</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Librarian</h2>     
+      <p><button type="button" class="btn btn-default" ng-click="showLibrarianModal()">Select</button></p>
+   </div>
+    <div class="col-md-4">
+      <h2>Borrower</h2>
+      <p><a class="btn btn-default" ng-click="showBorrowerModal()" role="button">Select</a></p>
+    </div>
+  </div>
+  <hr>
+  <footer>
+    <p>© Charles Tang</p>
+  </footer>
+</div>

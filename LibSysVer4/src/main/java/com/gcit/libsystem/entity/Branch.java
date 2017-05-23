@@ -1,0 +1,110 @@
+package com.gcit.libsystem.entity;
+
+import java.io.Serializable;
+import java.util.*;
+
+public class Branch implements Serializable{
+	
+
+	private static final long serialVersionUID = 8693080021098507927L;
+	private Integer branchID;
+	private Integer bookID;
+	private Integer copies;
+	private String branchName;
+	private String branchAddress;
+	private List<Book> books;
+	private HashMap<Integer, Integer> noOfCopies = new HashMap<>();
+	
+	public Integer getBranchID() {
+		return branchID;
+	}
+	public void setBranchID(Integer branchID) {
+		this.branchID = branchID;
+	}
+	public String getBranchName() {
+		return branchName;
+	}
+	public void setBranchName(String branchName) {
+		this.branchName = branchName;
+	}
+	public String getBranchAddress() {
+		return branchAddress;
+	}
+	public void setBranchAddress(String branchAddress) {
+		this.branchAddress = branchAddress;
+	}
+	public List<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+	public Integer getNoOfCopies(Integer bookID) {
+		if (noOfCopies.containsKey(bookID)){
+			return noOfCopies.get(bookID);
+		}
+		return null;
+	}
+	public void setNoOfCopies(Integer bookID, Integer copy) {
+			noOfCopies.put(bookID, copy);
+	}
+	public Integer getBookID() {
+		return bookID;
+	}
+	public void setBookID(Integer bookID) {
+		this.bookID = bookID;
+	}
+	
+	public Integer getCopies() {
+		return copies;
+	}
+	public void setCopies(Integer copies) {
+		this.copies = copies;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((branchAddress == null) ? 0 : branchAddress.hashCode());
+		result = prime * result + ((branchID == null) ? 0 : branchID.hashCode());
+		result = prime * result + ((branchName == null) ? 0 : branchName.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Branch other = (Branch) obj;
+		if (branchAddress == null) {
+			if (other.branchAddress != null) {
+				return false;
+			}
+		} else if (!branchAddress.equals(other.branchAddress)) {
+			return false;
+		}
+		if (branchID == null) {
+			if (other.branchID != null) {
+				return false;
+			}
+		} else if (!branchID.equals(other.branchID)) {
+			return false;
+		}
+		if (branchName == null) {
+			if (other.branchName != null) {
+				return false;
+			}
+		} else if (!branchName.equals(other.branchName)) {
+			return false;
+		}
+		return true;
+	}
+	
+	
+}

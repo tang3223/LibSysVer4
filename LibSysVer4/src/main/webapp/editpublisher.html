@@ -1,0 +1,21 @@
+<div>
+	<div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update Publisher Details</h4>
+      </div>
+	      <div class="modal-body">
+			<p>Enter the name of your publisher:</p>
+			<input type="text" class="form-control" ng-model="publisher.publisherName" placeholder="{{publisher.publisherName}}">
+			<p>Enter the address of your publisher:</p>			
+			<input type="text" class="form-control" ng-model="publisher.publisherAddress" placeholder="{{publisher.publisherAddress}}">
+			<p>Enter the phone number of your publisher:</p>			
+			<input type="text" class="form-control" ng-model="publisher.publisherPhone" placeholder="{{publisher.publisherPhone}}">						
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	        <button type="submit" class="btn btn-primary" ng-click="ok()">Save changes</button>
+	      </div>	      
+</div>
+      
+      

@@ -1,0 +1,52 @@
+<div ng-include="'adminsidebar.html'"></div>
+    <div class="container-fluid" ng-controller="bookloanCtrl">
+      <div class="row">        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="header">Book Loan List</h2>	          
+          <div class="panel panel-default">
+			  <div class="panel-heading">
+            		<div class="pull-right">
+					<nav aria-label="Page navigation">
+						<ul class="pagination" style="margin: 0px !important; vertical-align: middle;">
+							<li><a href="" aria-label="Previous" ng-click="pagination.prevPage()"> <span aria-hidden="true">&laquo;</span></a></li>
+							<li ng-repeat="n in [] | range: pagination.numPages"
+								ng-class="{active: n == pagination.page}"><a href="" ng-click="pagination.toPageId(n)">{{n+1}}</a></li>
+							<li><a href="" aria-label="Next" ng-click="pagination.nextPage()"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>          				  
+			  </div>
+			
+			  <table class="table table-striped">
+			    <thead>
+                <tr>
+                  <th><h4><span class="label label-primary">#</span></h4></th>
+                  <th><h4><span class="label label-primary">Book Title</span></h4></th>
+                  <th><h4><span class="label label-primary">Library Branch Name</span></h4></th>
+                  <th><h4><span class="label label-primary">Borrower Name</span></h4></th>
+                  <th><h4><span class="label label-primary">Date Out</span></h4></th>
+                  <th><h4><span class="label label-primary">Due Date</span></h4></th>
+                  <th><h4><span class="label label-primary">Date In</span></h4></th>
+                  <th><h4><span class="label label-primary">Edit</span></h4></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr ng-repeat=" bl in bookloans | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+                  <td>{{$index+1}}</td>
+                  <td>{{bl.book.title}}</td>
+                  <td>{{bl.branch.branchName}}</td>
+                  <td>{{bl.borrower.borrowerName}}</td>
+                  <td>{{bl.dateOut | date:'yyyy-MM-dd'}}</td>
+                  <td>{{bl.dueDate | date:'yyyy-MM-dd'}}</td>
+                  <td>{{bl.dateIn == null ? "" : bl.dateIn | date:'yyyy-MM-dd'}}</td>
+                  <td><button type="button" class="btn btn-primary" ng-disabled="bl.dateIn != null" 
+                  	ng-click="showEditBookLoanModal(bl.book.bookId, bl.branch.branchID, bl.borrower.borrowerID, bl.dateOut)">Update</button></td>
+                </tr>
+              </tbody>        
+			 </table>
+		  </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,15 @@
+<div>
+	<div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update Book Loan Details</h4>
+      </div>
+	      <div class="modal-body">
+			<p>Enter the new due date of your book loan: {{bookloan.dueDate | date:'yyyy-MM-dd'}}</p>
+			<div uib-datepicker ng-model="bookloan.dueDate" class="well well-sm" datepicker-options="dateOption"></div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	        <button type="submit" class="btn btn-primary" ng-click="ok()">Save changes</button>
+	      </div>	      
+</div>

@@ -1,0 +1,51 @@
+<div ng-include="'adminsidebar.html'"></div>
+<div class="container-fluid" ng-controller="authorCtrl">
+      <div class="row">        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="header">Author List</h2>	          
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+    			<input type="text" class="form-control" placeholder="Search for..." ng-model="searchAuthorName"
+   					ng-change="searchAuthor()">
+            </div>
+          </div>
+          <div class="panel panel-default" >
+			  <div class="panel-heading">
+ 				<button type="button" class="btn btn-primary" ng-click="initAuthor(); showAddAuthorModal()">
+ 					Add Author</button>
+           		<div class="pull-right">
+					<nav aria-label="Page navigation">
+						<ul class="pagination" style="margin: 0px !important; vertical-align: middle;">
+							<li><a href="" aria-label="Previous" ng-click="pagination.prevPage()"> <span aria-hidden="true">&laquo;</span></a></li>
+							<li ng-repeat="n in [] | range: pagination.numPages"
+								ng-class="{active: n == pagination.page}"><a href="" ng-click="pagination.toPageId(n)">{{n+1}}</a></li>
+							<li><a href="" aria-label="Next" ng-click="pagination.nextPage()"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>         				  
+			  </div>
+			
+			  <table class="table table-striped">
+			    <thead>
+                <tr>
+                  <th><h4><span class="label label-primary">#</span></h4></th>
+                  <th><h4><span class="label label-primary">Author Name</span></h4></th>
+                  <th><h4><span class="label label-primary">Edit</span></h4></th>
+                  <th><h4><span class="label label-primary">Delete</span></h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="a in authors | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+                  <td>{{$index+1}}</td>
+                  <td>{{a.authorName}}</td>
+                  <td><button type="button" class="btn btn-primary" ng-click="showEditAuthorModal(a.authorID)">Update</button></td>
+                  <td><button type="button" class="btn btn-danger" ng-click="showDelAuthorModal(a.authorID)">Delete</button></td>
+                </tr>
+              </tbody>        
+			 </table>
+		  </div>
+        </div>
+      </div>     
+    </div>
+

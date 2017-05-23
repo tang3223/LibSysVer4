@@ -1,0 +1,35 @@
+<div ng-include="'borrowersidebar.html'"></div>
+    <div class="container-fluid" ng-controller="ckrtCtrl">
+      <div class="row">        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="header">Book List</h2>	          
+          <div class="panel panel-default">
+			  <div class="panel-heading">
+			  </div>
+			  <table class="table table-striped">
+			    <thead>
+                <tr>
+                  <th><h4><span class="label label-primary">#</span></h4></th>
+                  <th><h4><span class="label label-primary">Book Title</span></h4></th>
+                  <th><h4><span class="label label-primary">Day Out</span></h4></th>
+                  <th><h4><span class="label label-primary">Library Branch</span></h4></th>
+                  <th><h4><span class="label label-primary">Num of Copies</span></h4></th>
+                  <th><h4><span class="label label-primary">Return</span></h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="bl in bookLoanReturn">
+                  <td>{{$index+1}}</td>
+                  <td>{{bl.book.title}}</td>
+                  <td>{{bl.dateOut | date:'yyyy-MM-dd'}}</td>
+				  <td>{{bl.branch.branchName}}</td>
+				  <td>{{bl.book.relatedCopies}}</td>
+                  <td><button type="button" class="btn btn-primary" ng-click="showReturnBookModal(bl.bookID, bl)">
+						Return</button></td>
+                </tr>
+              </tbody>        
+			 </table>
+		  </div>
+        </div>
+      </div>
+    </div>

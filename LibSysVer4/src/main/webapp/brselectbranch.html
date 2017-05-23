@@ -1,0 +1,33 @@
+  <div>
+	<div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Select Library Branch</h4>
+      </div>
+	      <div class="modal-body">
+      		<div class="input-group">
+		      <input type="number" min="1" ng-model="cardNum" class="form-control" placeholder="Card ID...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" type="button" ng-click="check(cardNum)">Check ID</button>	        
+		      </span>
+		    </div>
+		    <hr>
+		    <div ng-show="showError" ng-class="{fade:doFade}" class="alert alert-danger"><strong>Error:</strong> {{errorMessage}}</div>
+		    <div ng-show="showPass" ng-class="{fade:doFade}" class="alert alert-success"><strong>Pass!</strong></div>
+		    <hr>
+			<div class="form-group">
+			<select ng-model="branchID" required>
+				<option ng-repeat="bch in branchs " value="{{bch.branchID}}">
+					{{bch.branchName}}</option>
+			</select>
+			</div>
+			<hr>
+			<div>
+  			<toggle ng-model="isCheckOut" ng-change="changed()" on="CheckOut" off="Return" onstyle="btn-primary" offstyle="btn-success"></toggle>  
+  			</div> 
+	      </div>
+	      <div class="modal-footer">
+			<button type="button" class="btn btn-primary" ng-click="ok()" ng-disabled="failIDCheck">Select</button>
+	      </div>	      
+</div>
+

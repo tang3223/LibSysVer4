@@ -1,0 +1,92 @@
+<script src="./angular/angular.js"></script>
+<script src="./angular/angular-route.js"></script>
+<script src="./angular/angular-cookies.js"></script>
+<script src="./angular/angular-animate.js"></script>
+<script src="./resources/common/app.js"></script>
+<script src="./resources/common/config.js"></script>
+<script src="./resources/common/main-controller.js"></script>
+<script src="./resources/plugins/simplePagination.js"></script>
+<script src="./resources/plugins/angular-bootstrap-toggle.js"></script>
+<script src="./bootstrap/js/ui-bootstrap-tpls.js"></script>
+<script src="./resources/business/author/author-controller.js"></script>
+<script src="./resources/business/author/author-data.js"></script>
+<script src="./resources/business/author/author-service.js"></script>
+<script src="./resources/business/book/book-controller.js"></script>
+<script src="./resources/business/book/book-data.js"></script>
+<script src="./resources/business/book/book-service.js"></script>
+<script src="./resources/business/borrower/borrower-controller.js"></script>
+<script src="./resources/business/borrower/borrower-data.js"></script>
+<script src="./resources/business/borrower/borrower-service.js"></script>
+<script src="./resources/business/branch/branch-controller.js"></script>
+<script src="./resources/business/branch/branch-data.js"></script>
+<script src="./resources/business/branch/branch-service.js"></script>
+<script src="./resources/business/genre/genre-controller.js"></script>
+<script src="./resources/business/genre/genre-data.js"></script>
+<script src="./resources/business/genre/genre-service.js"></script>
+<script src="./resources/business/publisher/publisher-controller.js"></script>
+<script src="./resources/business/publisher/publisher-data.js"></script>
+<script src="./resources/business/publisher/publisher-service.js"></script>
+<script src="./resources/business/bookloan/bookloan-controller.js"></script>
+<script src="./resources/business/bookloan/bookloan-data.js"></script>
+<script src="./resources/business/bookloan/bookloan-service.js"></script>
+<script src="./resources/business/librarian/lib-controller.js"></script>
+<script src="./resources/business/librarian/lib-data.js"></script>
+<script src="./resources/business/librarian/lib-service.js"></script>
+<script src="./resources/business/checkreturn/ckrt-controller.js"></script>
+<script src="./resources/business/checkreturn/ckrt-data.js"></script>
+<script src="./resources/business/checkreturn/ckrt-service.js"></script>
+
+<html lang="en" ng-app="libSysApp">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://54.83.8.59/site/wp-content/uploads/2014/02/favicon.png">
+    <title>GCIT Library System</title>
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./bootstrap/css/dashboard.css" rel="stylesheet">
+    <link href="./bootstrap/css/jumbotron.css" rel="stylesheet">
+    <link href="./resources/plugins/angular-bootstrap-toggle.css" rel="stylesheet">
+    
+</head>
+
+<body>
+   <nav class="navbar navbar-inverse navbar-fixed-top">
+     <div class="container-fluid">
+       <div class="navbar-header">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" href="#/home">Library System</a>
+       </div>
+       <div id="navbar" class="navbar-collapse collapse" ng-controller="mainCtrl">
+         <ul class="nav navbar-nav navbar-right">
+           <li><a href="#/admin">Adminstrator</a></li>
+           <li><a ng-click="showLibrarianModal()">Librarian</a></li>
+           <li><a ng-click="showBorrowerModal()">Borrower</a></li>
+           <li><a href="#">Help</a></li>
+         </ul>
+       </div>
+     </div>
+   </nav>
+
+<div ng-view class="slideup">
+
+</div>
+
+
+   <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="./bootstrap/js/jquery.min.js.download"></script>
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="./bootstrap/js/bootstrap.js"></script>
+  <script src="./bootstrap/js/holder.min.js.download"></script>
+ 
+</body>
+</html>

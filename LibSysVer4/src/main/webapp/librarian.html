@@ -1,0 +1,18 @@
+<div>
+	<div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Select Library Branch</h4>
+      </div>
+	      <div class="modal-body">
+			<p>Select the library branch to manage:</p>
+			<select ng-model="branchID" required>
+				<option ng-repeat="bch in branchs " value="{{bch.branchID}}">
+					{{bch.branchName}}</option>
+			</select>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="ok()">Select</button>
+	      </div>	      
+</div>

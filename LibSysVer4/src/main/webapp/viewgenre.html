@@ -1,0 +1,44 @@
+<div ng-include="'adminsidebar.html'"></div>
+    <div class="container-fluid" ng-controller="genreCtrl">
+      <div class="row">        
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h2 class="header">Genre List</h2>	          
+          <div class="panel panel-default">
+			  <div class="panel-heading">
+ 				<button type="button" class="btn btn-primary" ng-click="initGenre(); showAddGenreModal()">
+ 					Add Genre</button>
+            		<div class="pull-right" id="page-selection">
+					<nav aria-label="Page navigation">
+						<ul class="pagination" style="margin: 0px !important; vertical-align: middle;">
+							<li><a href="" aria-label="Previous" ng-click="pagination.prevPage()"> <span aria-hidden="true">&laquo;</span></a></li>
+							<li ng-repeat="n in [] | range: pagination.numPages"
+								ng-class="{active: n == pagination.page}"><a href="" ng-click="pagination.toPageId(n)">{{n+1}}</a></li>
+							<li><a href="" aria-label="Next" ng-click="pagination.nextPage()"> <span aria-hidden="true">&raquo;</span>
+							</a></li>
+						</ul>
+					</nav>
+				</div>         				  
+			  </div>
+			
+			  <table class="table table-striped">
+			    <thead>
+                <tr>
+                  <th><h4><span class="label label-primary">#</span></h4></th>
+                  <th><h4><span class="label label-primary">Genre Name</span></h4></th>
+                  <th><h4><span class="label label-primary">Edit</span></h4></th>
+                  <th><h4><span class="label label-primary">Delete</span></h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat=" g in genres | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage">
+                  <td>{{$index+1}}</td>
+                  <td>{{g.genreName}}</td>
+                  <td><button type="button" class="btn btn-primary" ng-click="showEditGenreModal(g.genreId)">Update</button></td>
+                  <td><button type="button" class="btn btn-danger" ng-click="showDelGenreModal(g.genreId)">Delete</button></td>
+                </tr>
+              </tbody>        
+			 </table>
+		  </div>
+        </div>
+      </div>
+    </div>
